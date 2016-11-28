@@ -23,7 +23,6 @@ import {loginErrorToMessage, registerErrorToMessage} from '../../util';
 // -------------(LOGIN_ERROR, ADD_NOTIFICATION with login error|)
 
 
-
 export const login = action$ => action$
   .ofType(ActionTypes.DO_LOGIN)
   .switchMap(({payload}) => Observable
@@ -45,7 +44,7 @@ export const login = action$ => action$
     Actions.addNotificationAction({text: loginErrorToMessage(error), alertType: 'danger'}))),
   );
 
-//Similar to login
+// Similar to login
 
 export const register = action$ => action$
   .ofType(ActionTypes.DO_REGISTER)
@@ -69,5 +68,10 @@ export const register = action$ => action$
   );
 
 
-  export const logout = action$ => action$
-    .ofType(ActionTypes.DO_LOGOUT).switchMap(() => Observable.of(Actions.addNotificationAction({text: 'Logout success', alertType: 'info'})));
+export const logout = action$ => action$
+  .ofType(ActionTypes.DO_LOGOUT).switchMap(() => Observable.of(Actions.addNotificationAction({text: 'Logout success', alertType: 'info'})));
+/*
+export const automaticNotificationRemove = action$ => action$
+  .ofType(ActionTypes.ADD_NOTIFICATION).switchMap(() => Observable
+  .delay(2000)
+  .of(Actions.removeNotificationAction({text: 'Logout success', alertType: 'info'})));*/

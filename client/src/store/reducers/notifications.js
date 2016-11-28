@@ -12,6 +12,11 @@ export const notifications = (state = initialState, action) => {
       const notificationId = action.payload.notificationId;
       return state.filter(notification => notification.id !== notificationId);
     }
+    case ActionTypes.REMOVE_ALL_NOTIFICATIONS: {
+      // state.splice(0, state.length);
+      // return state.splice(0, state.length);
+      return state.filter(() => false === true);
+    }
     default:
       return state;
   }

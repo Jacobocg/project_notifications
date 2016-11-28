@@ -43,3 +43,7 @@ export const removeNotificationAction = notificationId => ({
   type: ActionTypes.REMOVE_NOTIFICATION,
   payload: {notificationId},
 });
+
+export const removeAllNotificationsAction = () => ({
+  type: ActionTypes.REMOVE_ALL_NOTIFICATIONS,
+});

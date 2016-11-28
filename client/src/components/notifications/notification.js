@@ -8,7 +8,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const Notification = ({onRemoveNotificationClick, notification}) => (
-  <div className={`alert alert-dismissible alert-${notification.alertType}`} role="alert">
+  <div className={`alert alert-dismissible alert-${notification.alertType}`} role="alert" auto={setTimeout(() => { onRemoveNotificationClick(notification.id); }, 5000)}>
+
     <button
       type="button"
       className="close"
