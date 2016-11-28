@@ -1,12 +1,12 @@
 // our packages
 import * as ActionTypes from '../actionTypes';
 
-const initialState = {
+const initialState = () => ({
   token: localStorage.getItem('user.token'),
   user: JSON.parse(localStorage.getItem('user.data')),
-};
+});
 
-export const auth = (state = initialState, action) => {
+export const auth = (state = initialState(), action) => {
   switch (action.type) {
     case ActionTypes.REGISTER_SUCCESS:
       return {
@@ -24,6 +24,10 @@ export const auth = (state = initialState, action) => {
       return {
         ...state,
       };
+    case ActionTypes.DO_LOGOUT:
+      localStorage.removeItem('user.token');
+      localStorage.removeItem('user.data');
+      return initialState();
     default:
       return state;
   }
