@@ -4,7 +4,7 @@ import * as Actions from '../actions';
 import {loginErrorToMessage, registerErrorToMessage} from '../../util';
 
 
-// ASCII diagram for Rx Streams (see: https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) 
+// ASCII diagram for Rx Streams (see: https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
 
 // Success login:
 // --(DO_LOGIN|)
@@ -67,3 +67,7 @@ export const register = action$ => action$
     },
     Actions.addNotificationAction({text: registerErrorToMessage(error), alertType: 'danger'}))),
   );
+
+
+  export const logout = action$ => action$
+    .ofType(ActionTypes.DO_LOGOUT).switchMap(() => Observable.of(Actions.addNotificationAction({text: 'Logout success', alertType: 'info'})));
